@@ -4,21 +4,15 @@
 		<title>Simcraft Trinket Compare Generator</title>
 	</head>
 	<body>
-		<label for="gearlist">Paste gear list without trinket lines from SIMC</label><br>
-		<textarea id="gearlist" name="gearlist" cols="80" rows="10">head=greyed_dragonscale_coif,id=139214,bonus_id=1805/1487
-neck=cursed_beartooth_necklace,id=139239,bonus_id=1807/1477/3336,enchant=mark_of_the_hidden_satyr
-shoulders=thundercrush_pauldrons,id=134478,bonus_id=1727/1492/1813
-back=cape_of_rigid_order,id=134402,bonus_id=1727/1492/1813,enchant=150agi
-chest=luminous_bladesworn_hauberk,id=137498,bonus_id=3410/1808/1497/1813,gems=100mastery
-wrists=crestrider_conduit_bracers,id=134484,bonus_id=1727/1497/3336
-hands=farseers_gauntlets,id=139700,bonus_id=3385/3384
-waist=tideskorn_cinch,id=134207,bonus_id=3395/1808/1517/3337,gems=100mastery
-legs=sea_stalkers_leggings,id=134256,bonus_id=1726/41/1512/3337
-feet=ley_dragoons_stompers,id=134298,bonus_id=1727/1808/1502/1813
-finger1=grasping_tentacle_loop,id=133634,bonus_id=3410/1497/1813,enchant=150mastery
-finger2=dreadful_cyclopean_signet,id=139237,bonus_id=1807/1472,enchant=150mastery
-main_hand=doomhammer,id=128819,bonus_id=745,gem_id=139256/139261/139264/0,relic_id=1805:1497:3336/1807:1472/1807:1512:3337/0
-off_hand=fury_of_the_stonemother,id=128873</textarea><br>
+		<ul>
+			<li>In SIMC, import your character profile</li>
+			<li>Find your trinkets in the generated file, should be under trinket1= and trinket2=</li>
+			<li>Comment out those lines by putting a # in front of them</li>
+			<li>Put in a list of trinkets you want to use below, in simc's format, note instead of bonusids, you can use ilevel=850</li>
+			<li>Click Generate List</li>
+			<li>Select, copy, and paste the results at the bottom of your simc import</li>
+			<li>Run the simulation in Simc!</li>
+		</ul>
 
 		<label for="trinketlist">Paste trinket lines without trinket1= from SIMC</label><br>
 		<textarea id="trinketlist" name="trinketlist" cols="80" rows="10">memento_of_angerboda,id=133644,bonus_id=1727/1492/1813
@@ -33,7 +27,6 @@ nightbornes_hunting_horn,id=134291,bonus_id=605/1497/1824</textarea><br>
 		<textarea id="listoutput" name="listoutput" readonly cols="80" rows="10"></textarea><br>
 		<script type="text/javascript">
 			function generateList(){
-				var gearList = document.getElementById('gearlist').value;
 				var trinketList = document.getElementById('trinketlist').value;
 				var trinketArray = trinketList.split('\n');
 
@@ -49,11 +42,11 @@ nightbornes_hunting_horn,id=134291,bonus_id=605/1497/1824</textarea><br>
 				});
 				
 				var outputtext = "";
+				//outputtext = outputtext + gearList + '\n';
 				trinketComboArray.forEach(function(comboItem,c,trinketComboArray){
 					trinket1name = comboItem.trinket1.split(',')[0];
 					trinket2name = comboItem.trinket2.split(',')[0];
-					outputtext = outputtext + 'name="' + trinket1name + '_' + trinket2name + '"\n';
-					outputtext = outputtext + gearList + '\n';
+					outputtext = outputtext + 'copy="' + trinket1name + '_' + trinket2name + '"\n';
 					outputtext = outputtext + 'trinket1=' + comboItem.trinket1 + '\n';
 					outputtext = outputtext + 'trinket2=' + comboItem.trinket2 + '\n';
 					outputtext = outputtext + '\n';
