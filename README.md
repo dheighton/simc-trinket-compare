@@ -8,3 +8,8 @@ https://dheighton.github.io/simc-trinket-compare/trinkets.html
 
 Or
 Download and run on your local computer, needs no extra code.
+
+Came accross this:
+https://mods.curse.com/addons/wow/254069-simpermut
+
+May be a lot easier/better, can do other gear compares too.
